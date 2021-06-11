@@ -1,11 +1,15 @@
-from PyPDF2 import PdfFileMerger
+# pip install pdfrw
+# pip install os-sys
+
+from pdfrw import PdfReader, PdfWriter
 import os
 
-merger = PdfFileMerger()
+source_dir = os.getcwd()
 
-for item in os.listdir():
-     if item.endswith('pdf'):
-        merger.append(items)
+writer = PdfWriter()
 
-merger.write('waste_pdf.pdf')
-merger.close()
+for item in os.listdir(source_dir):
+    if item.endswith('pdf'):
+        writer.addpages(PdfReader(item).pages)
+
+writer.write('result.pdf')
