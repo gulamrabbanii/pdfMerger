@@ -1,4 +1,6 @@
-rom docx import Document
+# pip install python-docx
+
+from docx import Document
 
 doc1 = Document('1.docx')
 doc2 = Document('2.docx')
