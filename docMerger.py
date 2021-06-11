@@ -1,19 +1,7 @@
-from docx import Document
-from docxcompose.composer import Composer
+rom docx import Document
 
-files = ["D:/output/pp.docx", "D:/output/tt.docx","D:/output/pu.docx"]
-composed = "D:/output/composed.docx"
-
-result = Document(files[0])
-result.add_page_break()
-composer = Composer(result)
-
-for i in range(1, len(files)):
-    doc = Document(files[i])
-
-    if i != len(files) - 1:
-        doc.add_page_break()
-
-    composer.append(doc)
-
-composer.save(composed)
+doc1 = Document('1.docx')
+doc2 = Document('2.docx')
+for element in doc2.element.body:
+    doc1.element.body.append(element)
+doc1.save('new.docx')
